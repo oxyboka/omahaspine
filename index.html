@@ -1,105 +1,351 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omaha Spine – Body In Motion Chiropractic</title>
-    <style>
-        body {font-family: 'Roboto', sans-serif; margin:0; padding:0; background:#fff; color:#333;}
-        header {display:flex; justify-content:space-between; align-items:center; padding:20px; background:#004080; color:#fff; position:sticky; top:0; z-index:1000;}
-        .logo img {height:50px;}
-        nav a {margin:0 15px; text-decoration:none; color:#fff; font-weight:600;}
-        nav a:hover {text-decoration:underline;}
-        .btn-primary {background:#ff6600; color:#fff; padding:10px 20px; border-radius:5px; text-decoration:none; font-weight:600;}
-        .hero {text-align:center; padding:80px 20px; background:#eaf6fb;}
-        .hero h1 {font-size:2.5em; margin-bottom:10px; color:#004080;}
-        .hero p {font-size:1.2em; color:#555; margin-bottom:20px;}
-        .section {padding:50px 20px; max-width:1200px; margin:auto;}
-        .services {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; text-align:center;}
-        .services div {padding:20px; background:#fff; border-radius:10px; box-shadow:0 4px 6px rgba(0,0,0,0.1);}
-        .about {display:flex; flex-wrap:wrap; align-items:center; gap:30px;}
-        .about img {max-width:300px; border-radius:10px;}
-        .testimonials {background:#f1f1f1; padding:50px 20px; text-align:center;}
-        footer {background:#004080; color:#fff; text-align:center; padding:20px;}
-        iframe {width:100%; height:300px; border:0; border-radius:10px; margin-top:20px;}
-        form {max-width:600px; margin:30px auto; display:flex; flex-direction:column; gap:15px;}
-        input, textarea {padding:10px; border:1px solid #ccc; border-radius:5px; font-size:1em;}
-        button {background:#ff6600; color:#fff; padding:10px; border:none; border-radius:5px; font-size:1em; cursor:pointer;}
-        button:hover {background:#e65c00;}
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Omaha Spine | Body In Motion Chiropractic Clinic</title>
+  <meta name="description" content="Compassionate chiropractic care in Omaha. Dry needling, Graston Technique, manual adjustments, and more." />
+  <style>
+    :root{
+      --brand:#1e88e5; /* primary */
+      --brand-700:#1565c0;
+      --accent:#43a047; /* secondary */
+      --bg:#f7fafc; /* light gray */
+      --text:#1a202c; /* dark */
+      --muted:#4a5568; /* gray */
+      --card:#ffffff;
+      --shadow:0 8px 24px rgba(0,0,0,.08);
+      --radius:18px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:var(--bg); color:var(--text);
+    }
+    a{ color:inherit; text-decoration:none; }
+    .container{ max-width:1200px; margin-inline:auto; padding:0 20px; }
+    /* Header */
+    .skip{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .skip:focus{ position:static; width:auto; height:auto; padding:.5rem 1rem; background:var(--brand); color:#fff; border-radius:8px; margin:8px; display:inline-block; }
+    header{
+      position:sticky; top:0; z-index:1000; background:#fff; box-shadow:0 1px 8px rgba(0,0,0,.05);
+    }
+    .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
+    .logo{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px; }
+    .logo-badge{ width:36px; height:36px; border-radius:50%; background:conic-gradient(from 180deg, var(--brand), var(--accent)); display:grid; place-items:center; color:#fff; font-weight:900; box-shadow:var(--shadow); }
+    .menu{ display:flex; gap:22px; align-items:center; }
+    .menu a{ color:var(--muted); font-weight:600; }
+    .menu a:hover{ color:var(--text); }
+    .cta{ background:var(--brand); color:#fff; padding:10px 16px; border-radius:999px; font-weight:700; box-shadow:var(--shadow); border:0; cursor:pointer; }
+    .cta:hover{ background:var(--brand-700); }
+    .hamburger{ display:none; background:none; border:0; font-size:26px; }
+    @media (max-width: 900px){
+      .menu{ display:none; position:absolute; left:0; right:0; top:64px; background:#fff; flex-direction:column; padding:16px; border-bottom:1px solid #eee; }
+      .menu.open{ display:flex; }
+      .hamburger{ display:block; }
+    }
+    /* Hero */
+    .hero{ display:grid; grid-template-columns: 1.2fr 1fr; gap:28px; align-items:center; padding:48px 0; }
+    .hero h1{ font-size: clamp(28px, 4vw, 48px); line-height:1.1; margin:0 0 12px; }
+    .hero p{ font-size: clamp(16px, 2vw, 18px); color:var(--muted); margin:0 0 22px; }
+    .hero .actions{ display:flex; gap:12px; flex-wrap:wrap; }
+    .hero .card{ background:var(--card); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow); }
+    .hero-illus{ min-height:260px; border-radius:var(--radius); background:linear-gradient(135deg, rgba(30,136,229,.18), rgba(67,160,71,.18)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="%231e88e5" stop-opacity="0.25"/><stop offset="1" stop-color="%2343a047" stop-opacity="0.25"/></linearGradient></defs><rect width="100%" height="100%" fill="url(%23g)"/><g fill="white" fill-opacity="0.6"><circle cx="300" cy="200" r="90"/><circle cx="720" cy="360" r="130"/><rect x="510" y="200" width="28" height="220" rx="8"/><rect x="540" y="220" width="28" height="180" rx="8"/></g></svg>') center/cover; box-shadow:var(--shadow); }
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+    }
+    /* Sections */
+    section{ padding:48px 0; }
+    .section-title{ font-size:28px; margin:0 0 18px; }
+    .grid{ display:grid; gap:18px; }
+    .grid-3{ grid-template-columns: repeat(3, 1fr); }
+    .grid-2{ grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 900px){
+      .grid-3{ grid-template-columns: 1fr; }
+      .grid-2{ grid-template-columns: 1fr; }
+    }
+    .card{ background:#fff; border-radius:var(--radius); box-shadow:var(--shadow); padding:20px; }
+    .icon{ width:44px; height:44px; border-radius:10px; display:grid; place-items:center; background:rgba(30,136,229,.12); margin-bottom:10px; }
+    .icon svg{ width:22px; height:22px; }
+    .muted{ color:var(--muted); }
+    .pill{ display:inline-block; padding:6px 12px; border-radius:999px; background:rgba(30,136,229,.08); color:var(--brand-700); font-weight:700; font-size:12px; letter-spacing:.3px; }
+    /* Testimonials */
+    .slider{ position:relative; overflow:hidden; }
+    .slides{ display:flex; transition: transform .4s ease; }
+    .testimonial{ min-width:100%; padding:24px; }
+    .slider-nav{ display:flex; gap:10px; justify-content:center; margin-top:12px; }
+    .dot{ width:10px; height:10px; border-radius:50%; background:#ddd; cursor:pointer; }
+    .dot.active{ background:var(--brand); }
+    /* Resources list */
+    .list{ display:grid; gap:10px; }
+    .list a{ background:#fff; border-radius:12px; padding:14px; box-shadow:var(--shadow); display:flex; justify-content:space-between; align-items:center; }
+    /* Contact */
+    form{ display:grid; gap:12px; }
+    input, textarea, select{ padding:12px 14px; border:1px solid #e2e8f0; border-radius:12px; font:inherit; }
+    input:focus, textarea:focus, select:focus{ outline:2px solid rgba(30,136,229,.35); border-color: var(--brand); }
+    .btn-row{ display:flex; gap:10px; flex-wrap:wrap; }
+    .btn-outline{ background:#fff; border:2px solid var(--brand); color:var(--brand-700); padding:10px 16px; border-radius:999px; font-weight:700; }
+    /* Footer */
+    footer{ background:#0b1321; color:#d7e0ef; padding:36px 0; margin-top:32px; }
+    footer a{ color:#e6f0ff; }
+    /* Back to top */
+    #toTop{ position:fixed; right:16px; bottom:16px; display:none; background:var(--brand); color:#fff; border:0; border-radius:999px; padding:12px 14px; box-shadow:var(--shadow); cursor:pointer; }
+  </style>
 </head>
 <body>
-<header>
-    <div class="logo"><img src="your-logo.png" alt="Omaha Spine Logo"></div>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#about">About</a>
+  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <div class="logo">
+        <div class="logo-badge" aria-hidden="true">OM</div>
+        <a href="#home" aria-label="Omaha Spine home"><span>Omaha Spine</span></a>
+      </div>
+      <nav>
+        <button class="hamburger" aria-expanded="false" aria-controls="menu" id="hamburger" aria-label="Menu">☰</button>
+        <div class="menu" id="menu">
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#resources">Patient Resources</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#contact">Contact</a>
+          <button class="cta" data-open-modal>Book Appointment</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="container hero" id="home">
+      <div>
+        <span class="pill">Trusted care in Omaha</span>
+        <h1>Compassionate Chiropractic Care to Get You Moving Again</h1>
+        <p>Personalized treatment plans for back pain, neck pain, sports injuries, and more. Dry needling, Graston Technique, and manual adjustments—all under one roof.</p>
+        <div class="actions">
+          <button class="cta" data-open-modal>Schedule an Appointment</button>
+          <a class="btn-outline" href="#services">Explore Services</a>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <strong>New patients:</strong> Save time by completing your intake form in advance. <a href="#resources" style="color:var(--brand-700); font-weight:700;">Go to Patient Resources →</a>
+        </div>
+      </div>
+      <div class="hero-illus" role="img" aria-label="Abstract illustration representing spine care"></div>
+    </section>
+
+    <!-- Services -->
+    <section class="container" id="services" aria-labelledby="services-title">
+      <h2 class="section-title" id="services-title">Services</h2>
+      <div class="grid grid-3">
+        <article class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8 2 5 6 5 10c0 6-3 6-3 8 0 1.1.9 2 2 2h16a2 2 0 0 0 2-2c0-2-3-2-3-8 0-4-3-8-7-8zM7 20h10"/></svg>
+          </div>
+          <h3>Chiropractic Adjustments</h3>
+          <p class="muted">Gentle, evidence-informed adjustments tailored to your condition and comfort.</p>
+          <a class="btn-outline" href="#contact">Ask about adjustments</a>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true" style="background:rgba(67,160,71,.12)">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v6l-2 2v2h10v-2l-2-2V5a3 3 0 0 0-3-3z"/></svg>
+          </div>
+          <h3>Dry Needling</h3>
+          <p class="muted">Target trigger points to release tight muscles and reduce pain quickly.</p>
+          <a class="btn-outline" href="#contact">Ask about dry needling</a>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true" style="background:rgba(30,136,229,.10)">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 12c4-2 14-2 18 0l-2 8H5l-2-8zM6 6h12l-1 4H7L6 6z"/></svg>
+          </div>
+          <h3>Graston Technique</h3>
+          <p class="muted">Instrument-assisted soft tissue mobilization to improve mobility and function.</p>
+          <a class="btn-outline" href="#contact">Ask about Graston</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="container" id="about" aria-labelledby="about-title">
+      <h2 class="section-title" id="about-title">Meet Dr. John Bartholet</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <p class="muted">With years of experience serving the Omaha community, Dr. Bartholet focuses on treating the root cause—not just the symptoms—using a blend of chiropractic care and modern manual therapies.</p>
+          <ul class="muted">
+            <li>• Patient-first, personalized treatment plans</li>
+            <li>• Certified in Dry Needling & Graston Technique</li>
+            <li>• Collaborative approach with your other providers</li>
+          </ul>
+        </div>
+        <div class="card" role="img" aria-label="Clinic photo placeholder" style="min-height:220px; background:linear-gradient(135deg, #fff, #eef6ff);"></div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="container" id="testimonials" aria-labelledby="testimonials-title">
+      <h2 class="section-title" id="testimonials-title">What Patients Say</h2>
+      <div class="card slider" aria-roledescription="carousel" aria-label="Patient testimonials">
+        <div class="slides" id="slides">
+          <figure class="testimonial">
+            <blockquote>“Best chiropractic care I’ve experienced—my back pain improved after just a few visits.”</blockquote>
+            <figcaption class="muted">— A.M.</figcaption>
+          </figure>
+          <figure class="testimonial">
+            <blockquote>“Dr. Bartholet really listens and explains each step. The dry needling was a game changer.”</blockquote>
+            <figcaption class="muted">— R.K.</figcaption>
+          </figure>
+          <figure class="testimonial">
+            <blockquote>“Friendly, efficient, and effective. I recommend them to all my teammates.”</blockquote>
+            <figcaption class="muted">— L.S.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="slider-nav" role="tablist" aria-label="Testimonial navigation">
+        <button class="dot active" aria-label="Go to slide 1" data-slide="0"></button>
+        <button class="dot" aria-label="Go to slide 2" data-slide="1"></button>
+        <button class="dot" aria-label="Go to slide 3" data-slide="2"></button>
+      </div>
+    </section>
+
+    <!-- Resources -->
+    <section class="container" id="resources" aria-labelledby="resources-title">
+      <h2 class="section-title" id="resources-title">Patient Resources</h2>
+      <div class="grid grid-2">
+        <div>
+          <div class="list">
+            <a href="#" aria-label="Download new patient intake form">New Patient Intake Form<span>⬇</span></a>
+            <a href="#" aria-label="Insurance information">Insurance & Payment Options<span>→</span></a>
+            <a href="#" aria-label="First visit guide">What to Expect on Your First Visit<span>→</span></a>
+            <a href="#" aria-label="FAQ">FAQ<span>→</span></a>
+          </div>
+        </div>
+        <div class="card">
+          <strong>Tip:</strong>
+          <p class="muted">Arrive 10 minutes early for your first appointment. Wear comfortable clothing and bring any relevant imaging or reports.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="container" id="contact" aria-labelledby="contact-title">
+      <h2 class="section-title" id="contact-title">Contact & Appointments</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <form aria-label="Appointment form">
+            <div class="grid grid-2">
+              <input aria-label="First name" placeholder="First name" required />
+              <input aria-label="Last name" placeholder="Last name" required />
+            </div>
+            <div class="grid grid-2">
+              <input type="email" aria-label="Email" placeholder="Email" required />
+              <input type="tel" aria-label="Phone" placeholder="Phone" />
+            </div>
+            <select aria-label="Service">
+              <option>Choose a service</option>
+              <option>Chiropractic Adjustment</option>
+              <option>Dry Needling</option>
+              <option>Graston Technique</option>
+            </select>
+            <textarea rows="4" aria-label="Message" placeholder="Tell us a bit about what’s going on…"></textarea>
+            <div class="btn-row">
+              <button type="submit" class="cta">Request Appointment</button>
+              <a class="btn-outline" href="tel:+1402XXXXXXX">Call the Clinic</a>
+            </div>
+          </form>
+        </div>
+        <div class="card">
+          <p><strong>Address</strong><br/>2445 S 120th St, Omaha, NE 68144</p>
+          <p><strong>Hours</strong><br/>Mon–Fri: 8:00–5:00 · Sat: 9:00–12:00</p>
+          <div style="border-radius:14px; overflow:hidden; box-shadow:var(--shadow); margin-top:8px;">
+            <iframe title="Map to clinic" src="https://www.google.com/maps?q=2445%20S%20120th%20St%2C%20Omaha%2C%20NE%2068144&output=embed" width="100%" height="220" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <p style="margin-top:10px"><a class="btn-outline" target="_blank" rel="noopener" href="https://www.google.com/maps/dir//2445+S+120th+St,+Omaha,+NE+68144">Get Directions</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex; flex-wrap:wrap; gap:20px; align-items:center; justify-content:space-between;">
+      <div>© <span id="year"></span> Body In Motion Chiropractic Clinic, PC</div>
+      <nav style="display:flex; gap:16px;">
+        <a href="#home">Home</a>
         <a href="#services">Services</a>
         <a href="#resources">Resources</a>
-        <a href="#testimonials">Testimonials</a>
         <a href="#contact">Contact</a>
-    </nav>
-    <a href="#contact" class="btn-primary">Book Appointment</a>
-</header>
-
-<section class="hero">
-    <h1>Compassionate Chiropractic Care in Omaha</h1>
-    <p>Helping you move better, live better.</p>
-    <a href="#contact" class="btn-primary">Schedule an Appointment</a>
-</section>
-
-<section class="section" id="services">
-    <h2 style="text-align:center; margin-bottom:30px; color:#004080;">Our Services</h2>
-    <div class="services">
-        <div>
-            <h3>Dry Needling</h3>
-            <p>Targeted muscle relief for chronic tension.</p>
-        </div>
-        <div>
-            <h3>Graston Technique</h3>
-            <p>Instrument-assisted soft tissue mobilization.</p>
-        </div>
-        <div>
-            <h3>Manual Adjustments</h3>
-            <p>Restore alignment and reduce pain naturally.</p>
-        </div>
+        <a href="#" aria-label="Privacy policy">Privacy</a>
+      </nav>
     </div>
-</section>
+  </footer>
 
-<section class="section about" id="about">
-    <img src="dr-bartholet.jpg" alt="Dr. John Bartholet">
-    <div>
-        <h2 style="color:#004080;">Meet Dr. John Bartholet</h2>
-        <p>Experienced chiropractor focused on personalized care for every patient.</p>
-        <a href="#contact" class="btn-primary">Contact Us</a>
-    </div>
-</section>
-
-<section class="testimonials" id="testimonials">
-    <h2 style="color:#004080;">What Our Patients Say</h2>
-    <p>“Best chiropractic care I've ever experienced!”</p>
-    <p>“Dr. Bartholet truly cares about his patients.”</p>
-</section>
-
-<section class="section" id="contact">
-    <h2 style="text-align:center; color:#004080;">Contact Us</h2>
-    <p style="text-align:center;">2445 S 120th St, Omaha, NE 68144 | (402) XXX-XXXX</p>
-
-    <form action="mailto:youremail@domain.com" method="post" enctype="text/plain">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
+  <!-- Modal -->
+  <dialog id="booking" style="border:none; border-radius:18px; padding:0; width:min(640px, 92vw); box-shadow:var(--shadow);">
+    <form method="dialog" style="padding:0;">
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:18px 20px; border-bottom:1px solid #eee;">
+        <strong>Book Appointment</strong>
+        <button value="cancel" style="background:none; border:0; font-size:22px; line-height:1; cursor:pointer;">×</button>
+      </div>
+      <div style="padding:20px; display:grid; gap:12px; background:#fff;">
+        <input placeholder="Full name" required />
+        <input type="email" placeholder="Email" required />
+        <input type="date" />
+        <select>
+          <option>Choose a service</option>
+          <option>Chiropractic Adjustment</option>
+          <option>Dry Needling</option>
+          <option>Graston Technique</option>
+        </select>
+        <textarea rows="4" placeholder="Anything we should know?"></textarea>
+        <button class="cta" value="submit">Submit Request</button>
+      </div>
     </form>
+  </dialog>
 
-    <iframe src="https://www.google.com/maps/embed?..." allowfullscreen></iframe>
-</section>
+  <button id="toTop" aria-label="Back to top">↑</button>
 
-<footer>
-    <p>&copy; 2025 Omaha Spine. All rights reserved.</p>
-</footer>
+  <script>
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+    hamburger.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', String(open));
+    });
+
+    // Modal openers
+    const dialog = document.getElementById('booking');
+    document.querySelectorAll('[data-open-modal]').forEach(btn => btn.addEventListener('click', () => dialog.showModal()));
+
+    // Simple testimonial slider
+    const slides = document.getElementById('slides');
+    const dots = Array.from(document.querySelectorAll('.dot'));
+    let index = 0;
+
+    function goTo(i){
+      index = i;
+      slides.style.transform = `translateX(-${i * 100}%)`;
+      dots.forEach((d,di)=>d.classList.toggle('active', di===i));
+    }
+    dots.forEach(d => d.addEventListener('click', e => goTo(Number(e.currentTarget.dataset.slide))));
+    setInterval(()=>{ goTo((index+1)%dots.length); }, 6000);
+
+    // Back to top visibility
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', () => {
+      toTop.style.display = window.scrollY > 600 ? 'block' : 'none';
+    });
+    toTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+    // Basic form demo (no backend)
+    document.querySelectorAll('form').forEach(f=>{
+      f.addEventListener('submit', e=>{
+        e.preventDefault();
+        alert('Thanks! We\'ll reach out to confirm your appointment.');
+        if(dialog.open) dialog.close();
+      });
+    });
+  </script>
 </body>
 </html>
-```
