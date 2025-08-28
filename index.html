@@ -1,0 +1,105 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omaha Spine – Body In Motion Chiropractic</title>
+    <style>
+        body {font-family: 'Roboto', sans-serif; margin:0; padding:0; background:#fff; color:#333;}
+        header {display:flex; justify-content:space-between; align-items:center; padding:20px; background:#004080; color:#fff; position:sticky; top:0; z-index:1000;}
+        .logo img {height:50px;}
+        nav a {margin:0 15px; text-decoration:none; color:#fff; font-weight:600;}
+        nav a:hover {text-decoration:underline;}
+        .btn-primary {background:#ff6600; color:#fff; padding:10px 20px; border-radius:5px; text-decoration:none; font-weight:600;}
+        .hero {text-align:center; padding:80px 20px; background:#eaf6fb;}
+        .hero h1 {font-size:2.5em; margin-bottom:10px; color:#004080;}
+        .hero p {font-size:1.2em; color:#555; margin-bottom:20px;}
+        .section {padding:50px 20px; max-width:1200px; margin:auto;}
+        .services {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; text-align:center;}
+        .services div {padding:20px; background:#fff; border-radius:10px; box-shadow:0 4px 6px rgba(0,0,0,0.1);}
+        .about {display:flex; flex-wrap:wrap; align-items:center; gap:30px;}
+        .about img {max-width:300px; border-radius:10px;}
+        .testimonials {background:#f1f1f1; padding:50px 20px; text-align:center;}
+        footer {background:#004080; color:#fff; text-align:center; padding:20px;}
+        iframe {width:100%; height:300px; border:0; border-radius:10px; margin-top:20px;}
+        form {max-width:600px; margin:30px auto; display:flex; flex-direction:column; gap:15px;}
+        input, textarea {padding:10px; border:1px solid #ccc; border-radius:5px; font-size:1em;}
+        button {background:#ff6600; color:#fff; padding:10px; border:none; border-radius:5px; font-size:1em; cursor:pointer;}
+        button:hover {background:#e65c00;}
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo"><img src="your-logo.png" alt="Omaha Spine Logo"></div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#resources">Resources</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="btn-primary">Book Appointment</a>
+</header>
+
+<section class="hero">
+    <h1>Compassionate Chiropractic Care in Omaha</h1>
+    <p>Helping you move better, live better.</p>
+    <a href="#contact" class="btn-primary">Schedule an Appointment</a>
+</section>
+
+<section class="section" id="services">
+    <h2 style="text-align:center; margin-bottom:30px; color:#004080;">Our Services</h2>
+    <div class="services">
+        <div>
+            <h3>Dry Needling</h3>
+            <p>Targeted muscle relief for chronic tension.</p>
+        </div>
+        <div>
+            <h3>Graston Technique</h3>
+            <p>Instrument-assisted soft tissue mobilization.</p>
+        </div>
+        <div>
+            <h3>Manual Adjustments</h3>
+            <p>Restore alignment and reduce pain naturally.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section about" id="about">
+    <img src="dr-bartholet.jpg" alt="Dr. John Bartholet">
+    <div>
+        <h2 style="color:#004080;">Meet Dr. John Bartholet</h2>
+        <p>Experienced chiropractor focused on personalized care for every patient.</p>
+        <a href="#contact" class="btn-primary">Contact Us</a>
+    </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+    <h2 style="color:#004080;">What Our Patients Say</h2>
+    <p>“Best chiropractic care I've ever experienced!”</p>
+    <p>“Dr. Bartholet truly cares about his patients.”</p>
+</section>
+
+<section class="section" id="contact">
+    <h2 style="text-align:center; color:#004080;">Contact Us</h2>
+    <p style="text-align:center;">2445 S 120th St, Omaha, NE 68144 | (402) XXX-XXXX</p>
+
+    <form action="mailto:youremail@domain.com" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+
+    <iframe src="https://www.google.com/maps/embed?..." allowfullscreen></iframe>
+</section>
+
+<footer>
+    <p>&copy; 2025 Omaha Spine. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
+```
